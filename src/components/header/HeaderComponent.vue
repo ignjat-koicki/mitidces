@@ -21,35 +21,39 @@
         />
       </div>
       <div class="header-wrapper">
-        <div v-for="item in header" :key="item.name" class="route-link-items">
-          <router-link v-if="!item.children" :to="{ name: item.routeName }" class="route-link">
+        <div v-for="item in header" :key="item.Name" class="route-link-items">
+          <router-link
+            v-if="!item?.SubItems?.length"
+            :to="{ name: item.Route, params: { lang: currentLangCode } }"
+            class="route-link"
+          >
             <div class="route-link-item">
-              <span>{{ item.name }}</span>
+              <span>{{ item.Name }}</span>
               <span class="text-line"></span>
             </div>
-            <span v-if="item.children"
+            <span v-if="item.SubItems"
               ><FontAwesomeIcon :size="'xs'" :icon="faChevronRight"
             /></span>
           </router-link>
-          <div v-if="item.children" class="route-link">
+          <div v-if="item.SubItems" class="route-link">
             <div class="route-link-item">
-              <span>{{ item.name }}</span>
+              <span>{{ item.Name }}</span>
               <span class="text-line"></span>
             </div>
-            <span v-if="item.children"
+            <span v-if="item.SubItems"
               ><FontAwesomeIcon :size="'xs'" :icon="faChevronRight"
             /></span>
           </div>
-          <div v-if="item.children?.length" class="dropdown">
+          <div v-if="item.SubItems?.length" class="dropdown">
             <div class="dropdown-items">
               <router-link
-                v-for="child in item.children"
-                :key="child.name"
-                :to="{ name: child.routeName }"
+                v-for="child in item.SubItems"
+                :key="child.Name"
+                :to="{ name: child.Route, params: { lang: currentLangCode } }"
                 class="sub-route-link"
               >
                 <FontAwesomeIcon :size="'xs'" :icon="faArrowRightLong" />
-                &nbsp;&nbsp;&nbsp;&nbsp;{{ child.name }}
+                &nbsp;&nbsp;&nbsp;&nbsp;{{ child.Name }}
               </router-link>
             </div>
           </div>
@@ -78,6 +82,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import SearchComponent from '../search/SearchComponent.vue'
 import router from '@/router/index.ts'
+import { Language } from '@/lang/lang.ts'
+import { Navigation } from '@/lang/lang-model.ts'
 
 export default {
   components: {
@@ -93,50 +99,23 @@ export default {
       faMinus: faMinus,
       faArrowRightLong: faArrowRightLong,
       isActive: false,
-      header: [
-        {
-          name: 'Devices',
-          routeName: 'Products',
-          children: [
-            {
-              name: 'Phones',
-              routeName: 'MobilePhones',
-            },
-            {
-              name: 'Laptops',
-              routeName: 'Laptops',
-            },
-            {
-              name: 'TVs',
-              routeName: 'TVs',
-            },
-          ],
-        },
-        {
-          name: 'ePlayStudio',
-          routeName: 'Entertainment',
-        },
-        {
-          name: 'eOffice',
-          routeName: 'eOffice',
-        },
-        {
-          name: 'News',
-          routeName: 'News',
-        },
-        {
-          name: 'Accessories',
-          routeName: 'Accessories',
-        },
-
-        {
-          name: 'Support',
-          routeName: 'CustomerSupport',
-        },
-      ],
+      header: [] as Navigation[],
+      currentLangCode: 'en',
     }
   },
+  created() {
+    this.initHeader()
+    this.initLang()
+  },
   methods: {
+    initLang() {},
+    initHeader() {
+      const language = new Language()
+      const code = sessionStorage.getItem('lang')
+      this.header = language.getLang(code!).Navigation as Navigation[]
+      this.currentLangCode = language.currentLangCode!
+      console.log(this.header)
+    },
     onActiveEvent(event: boolean) {
       this.isActive = event
     },

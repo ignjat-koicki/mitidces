@@ -6,6 +6,7 @@
         v-for="lang in languages.filter((x) => x.region == region)"
         :key="lang.code"
         class="lang-code-item"
+        @click="changeLangugage(lang)"
       >
         <div style="position: relative; top: -12px; left: -10px">{{ lang.nativeName }}</div>
         <div style="display: flex">
@@ -18,6 +19,8 @@
 </template>
 
 <script lang="ts">
+import { Language } from './../lang/lang'
+
 export default {
   name: 'LangPage',
   data() {
@@ -52,6 +55,7 @@ export default {
           nativeName: 'English',
           code: 'EN',
           region: 'Europe',
+          langCode: 'en',
           speakers: '1.5 billion',
         },
         {
@@ -73,6 +77,7 @@ export default {
           nativeName: 'Srpski',
           code: 'RS',
           region: 'Europe',
+          langCode: 'sr-latin-rs',
           speakers: '10 million',
         },
         {
@@ -164,17 +169,19 @@ export default {
       ],
     }
   },
-  computed: {
-    filteredLanguages() {
-      const query = this.searchTerm.trim().toLowerCase()
-      return this.languages.filter((language) => {
-        const matchesRegion =
-          this.selectedRegion === 'All regions' || language.region === this.selectedRegion
-        const matchesSearch = [language.name, language.nativeName, language.region].some((value) =>
-          value.toLowerCase().includes(query),
-        )
-        return matchesRegion && matchesSearch
-      })
+  methods: {
+    changeLangugage(lang: {
+      name: string
+      nativeName: string
+      code: string
+      region: string
+      speakers: string
+      langCode?: string
+    }) {
+      const language = new Language()
+      sessionStorage.setItem('lang', `${lang.langCode}`)
+      language.setCurrentLang(lang.code)
+      window.location.reload()
     },
   },
 }

@@ -1,7 +1,7 @@
 <template>
   <HeaderComponent class="header-wrapper" />
   <div class="container">
-    <router-view />
+    <component :is="getCurrentComponent()" />
   </div>
   <FooterComponent />
 </template>
@@ -9,12 +9,28 @@
 <script lang="ts">
 import HeaderComponent from './components/header/HeaderComponent.vue'
 import FooterComponent from './components/footer/FooterComponent.vue'
+import { Language } from './lang/lang.ts'
 
 export default {
   name: 'App',
   components: {
     HeaderComponent: HeaderComponent,
     FooterComponent: FooterComponent,
+  },
+  mounted() {
+    const code = sessionStorage.getItem('lang') ?? 'en'
+    const language = new Language()
+    language.setCurrentLang(code)
+  },
+  methods: {
+    getCurrentComponent() {
+      const matched = this.$router.currentRoute.value.matched
+      if (matched && matched.length > 0) {
+        const component = matched[matched.length - 1]?.components?.default
+        return component || null
+      }
+      return null
+    },
   },
 }
 </script>

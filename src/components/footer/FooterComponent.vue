@@ -15,11 +15,15 @@
       </div>
     </div>
     <p class="copyright">
-      © 2024 Mitidces. All rights reserved. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-      &nbsp;<span>Terms of use</span> &nbsp; | &nbsp;<span>Privacy Policy</span> &nbsp; |
-      &nbsp;Legal Questions &nbsp;| &nbsp; Sales
+      © 2024 Mitidces. All rights reserved. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+      &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<router-link
+        v-for="value in bottomFooter"
+        :to="{ name: value.route, params: { lang: currentLangCode } }"
+        :key="value.route"
+        >{{ value.name }}&nbsp;&nbsp;
+      </router-link>
       <router-link
-        :to="{ name: 'Language' }"
+        :to="{ name: 'Language', params: { lang: currentLangCode } }"
         style="margin-left: auto; display: flex; justify-self: flex-end"
         >{{ currentLang.name }}</router-link
       >
@@ -28,6 +32,8 @@
 </template>
 
 <script lang="ts">
+import { Language } from '@/lang/lang'
+
 export default {
   name: 'FooterView',
   data() {
@@ -53,6 +59,24 @@ export default {
           items: [{ name: 'hello@mitidces.com' }, { name: 'Available Monday to Friday' }],
         },
       ],
+      bottomFooter: [
+        {
+          name: 'Terms of Use',
+          route: 'TermsOfUses',
+        },
+        {
+          name: 'Privacy Policy',
+          route: 'PrivacyPolices',
+        },
+        {
+          name: 'Legal Questions',
+          route: 'LegalQuestions',
+        },
+        {
+          name: 'Sales',
+          route: 'Sales',
+        },
+      ],
       currentLang: {
         name: 'English',
         nativeName: 'English',
@@ -60,7 +84,14 @@ export default {
         region: 'Europe',
         speakers: '1.5 billion',
       },
+      currentLangCode: '',
     }
+  },
+  methods: {
+    initLang() {
+      const language = new Language()
+      this.currentLangCode = language.currentLangCode!
+    },
   },
 }
 </script>
