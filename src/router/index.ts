@@ -18,6 +18,10 @@ import LegalQustionsView from '@/views/footer-pages/LegalQuestionsView.vue'
 import PrivacyPolicesView from '@/views/footer-pages/PrivacyPolicesView.vue'
 import SalesView from '@/views/footer-pages/SalesView.vue'
 import TermsOfUseView from '@/views/footer-pages/TermsOfUseView.vue'
+import DigitalWatchesView from '@/views/accessories/DigitalWatchesView.vue'
+import CameraView from '@/views/accessories/CameraView.vue'
+import EarBundsView from '@/views/accessories/EarBundsView.vue'
+import ModelOffersView from '@/views/ModelOffersView.vue'
 
 const routes = [
   {
@@ -96,6 +100,11 @@ const routes = [
     component: ProductsView,
   },
   {
+    path: '/model-offers',
+    name: 'ModelOffers',
+    component: ModelOffersView,
+  },
+  {
     name: 'AllProducts',
     path: '/all-products',
     component: AllProductsView,
@@ -115,13 +124,32 @@ const routes = [
     path: '/for-customers',
     component: CustomerServicesView,
   },
+  {
+    name: 'Watches',
+    path: '/watches',
+    component: DigitalWatchesView,
+  },
+  {
+    name: 'Cameras',
+    path: '/camera',
+    component: CameraView,
+  },
+  {
+    name: 'Bunds',
+    path: '/ear-bunds',
+    component: EarBundsView,
+  },
 ]
 
 // const routes = [
 //   { path: '/', redirect: { name: 'Home', params: { lang: 'en' } } },
 //   {
 //     path: '/:lang(sr-latin-rs|en|eu-fr)$',
-//     redirect: (to) => ({ name: 'Home', params: { lang: to.params.lannavigatg } }),
+//     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+//     redirect: (to: { params: { lannavigatg: any } }) => ({
+//       name: 'Home',
+//       params: { lang: to.params.lannavigatg },
+//     }),
 //   },
 //   {
 //     path: '/:lang(sr-latin-rs|en|eu-fr)',

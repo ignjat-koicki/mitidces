@@ -1,8 +1,9 @@
 <template>
   <HeaderComponent class="header-wrapper" />
-  <div class="container">
+  <!-- <div class="container">
     <component :is="getCurrentComponent()" />
-  </div>
+  </div> -->
+  <router-view></router-view>
   <FooterComponent />
 </template>
 
@@ -56,5 +57,13 @@ body {
   .container {
     min-height: calc(100vh - 72px);
   }
+}
+
+.no-line {
+  border-bottom: 1px solid white !important;
+}
+
+.learn-more-button{
+  
 }
 </style>

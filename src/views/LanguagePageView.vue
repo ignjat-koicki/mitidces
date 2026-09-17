@@ -180,6 +180,7 @@ export default {
     }) {
       const language = new Language()
       sessionStorage.setItem('lang', `${lang.langCode}`)
+      sessionStorage.setItem('currentLanguage', JSON.stringify(lang))
       language.setCurrentLang(lang.code)
       window.location.reload()
     },

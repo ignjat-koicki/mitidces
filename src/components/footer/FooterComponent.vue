@@ -7,10 +7,10 @@
       <div v-for="section in footer" :key="section.header" class="footer-item">
         <h3>{{ section.header }}</h3>
         <div v-for="item in section.items" :key="item.name" class="footer-sub-item">
-          <a>
+          <router-link :to="{ name: item.href }">
             {{ item.name }}
             <span class="text-line"></span>
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
@@ -18,14 +18,14 @@
       © 2024 Mitidces. All rights reserved. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<router-link
         v-for="value in bottomFooter"
-        :to="{ name: value.route, params: { lang: currentLangCode } }"
+        :to="{ name: value.route }"
         :key="value.route"
         >{{ value.name }}&nbsp;&nbsp;
       </router-link>
       <router-link
-        :to="{ name: 'Language', params: { lang: currentLangCode } }"
+        :to="{ name: 'Language' }"
         style="margin-left: auto; display: flex; justify-self: flex-end"
-        >{{ currentLang.name }}</router-link
+        >{{ currentLang.name }} / {{ currentLang.code }}</router-link
       >
     </p>
   </footer>
@@ -42,21 +42,11 @@ export default {
         {
           header: 'Explore',
           items: [
-            { name: 'Products', href: '/products' },
-            { name: 'Services', href: '/services' },
-            { name: 'Features', href: '/features' },
+            { name: 'ModelOffers', href: 'ModelOffers' },
+            { name: 'TechBook', href: 'Laptops' },
+            { name: 'Tech', href: 'MobilePhones' },
+            { name: 'STech', href: 'TVs' },
           ],
-        },
-        {
-          header: 'Company',
-          items: [
-            { name: 'About us', href: '/about' },
-            { name: 'Contact us', href: 'mailto:hello@mitidces.com' },
-          ],
-        },
-        {
-          header: 'Connect',
-          items: [{ name: 'hello@mitidces.com' }, { name: 'Available Monday to Friday' }],
         },
       ],
       bottomFooter: [
@@ -92,6 +82,10 @@ export default {
       const language = new Language()
       this.currentLangCode = language.currentLangCode!
     },
+  },
+  created() {
+    if (sessionStorage.getItem('currentLanguage'))
+      this.currentLang = JSON.parse(sessionStorage.getItem('currentLanguage')!)
   },
 }
 </script>

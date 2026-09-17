@@ -22,11 +22,7 @@
       </div>
       <div class="header-wrapper">
         <div v-for="item in header" :key="item.Name" class="route-link-items">
-          <router-link
-            v-if="!item?.SubItems?.length"
-            :to="{ name: item.Route, params: { lang: currentLangCode } }"
-            class="route-link"
-          >
+          <router-link v-if="!item?.SubItems?.length" :to="{ name: item.Route }" class="route-link">
             <div class="route-link-item">
               <span>{{ item.Name }}</span>
               <span class="text-line"></span>
@@ -49,7 +45,7 @@
               <router-link
                 v-for="child in item.SubItems"
                 :key="child.Name"
-                :to="{ name: child.Route, params: { lang: currentLangCode } }"
+                :to="{ name: child.Route }"
                 class="sub-route-link"
               >
                 <FontAwesomeIcon :size="'xs'" :icon="faArrowRightLong" />

@@ -8,16 +8,30 @@ export class Language {
         Route: 'Devices',
         SubItems: [
           {
-            Name: 'TVs',
-            Route: 'TVs',
-          },
-          {
             Name: 'Laptops',
             Route: 'Laptops',
           },
           {
             Name: 'Phones',
             Route: 'MobilePhones',
+          },
+          {
+            Name: 'TVs',
+            Route: 'TVs',
+          },
+        ],
+      },
+      {
+        Name: 'Accessories',
+        Route: 'Accessories',
+        SubItems: [
+          {
+            Name: 'Digital Watches',
+            Route: 'Watches',
+          },
+          {
+            Name: 'Bunds',
+            Route: 'Bunds',
           },
         ],
       },
@@ -28,14 +42,6 @@ export class Language {
       {
         Name: 'eOffice',
         Route: 'eOffice',
-      },
-      {
-        Name: 'News',
-        Route: 'News',
-      },
-      {
-        Name: 'Accessories',
-        Route: 'Accessories',
       },
       {
         Name: 'Support',
@@ -79,16 +85,16 @@ export class Language {
         Route: 'Devices',
         SubItems: [
           {
-            Name: 'Televizori',
-            Route: 'TVs',
-          },
-          {
             Name: 'Laptopovi',
             Route: 'Laptops',
           },
           {
             Name: 'Mobilni telefoni',
             Route: 'MobilePhones',
+          },
+          {
+            Name: 'Televizori',
+            Route: 'TVs',
           },
         ],
       },
@@ -101,16 +107,22 @@ export class Language {
         Route: 'eOffice',
       },
       {
-        Name: 'Vesti',
-        Route: 'News',
-      },
-      {
         Name: 'Dodatna oprema',
         Route: 'Accessories',
+        SubItems: [
+          {
+            Name: 'Digitalni satovi',
+            Route: 'Watches',
+          },
+          {
+            Name: 'Slušalice',
+            Route: 'Bunds',
+          },
+        ],
       },
       {
         Name: 'Podrška',
-        Route: 'Support',
+        Route: 'CustomerSupport',
       },
     ],
     Pages: {
@@ -148,16 +160,30 @@ export class Language {
         Route: 'Devices',
         SubItems: [
           {
-            Name: 'TVs',
-            Route: 'TVs',
-          },
-          {
             Name: 'Laptops',
             Route: 'Laptops',
           },
           {
             Name: 'Phones',
             Route: 'MobilePhones',
+          },
+          {
+            Name: 'TVs',
+            Route: 'TVs',
+          },
+        ],
+      },
+      {
+        Name: 'Accessories',
+        Route: 'Accessories',
+        SubItems: [
+          {
+            Name: 'Digital Watches',
+            Route: 'Watches',
+          },
+          {
+            Name: 'Bunds',
+            Route: 'Bunds',
           },
         ],
       },
@@ -168,14 +194,6 @@ export class Language {
       {
         Name: 'eOffice',
         Route: 'eOffice',
-      },
-      {
-        Name: 'News',
-        Route: 'News',
-      },
-      {
-        Name: 'Accessories',
-        Route: 'Accessories',
       },
       {
         Name: 'Support',

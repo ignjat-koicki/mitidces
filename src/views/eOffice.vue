@@ -1,16 +1,32 @@
 <template>
   <div class="section-office-header">
     <h1 style="font-size: 50px">eOffice &nbsp;</h1>
-    <img src="./../assets/eOffice1.png" class="office-img" />
+    <img src="./../assets/eOffice.png" class="office-img" />
   </div>
   <div class="section-office-content">
-    <p style="text-align: center; font-size: 24px">
-      eOffice je naše okruženje za poslovne aplikacije. Poslovne aplikacije Vam mogu biti od velike
-      pomoći u svakodnevnoj upotrebi. To je vrsta alata za izradu dokumentacija, prezentacija,
-      izveštaja, tabelarnih prikaza podataka.
+    <p style="text-align: start">
+      eOffice je moderna digitalna platforma namenjena organizaciji, upravljanju i automatizaciji
+      poslovnih procesa. Sistem omogućava korisnicima da na jednom mestu upravljaju dokumentima,
+      poslovnim zadacima, komunikacijom i drugim aktivnostima koje su deo svakodnevnog poslovanja.
+      Cilj eOffice platforme je da pojednostavi rad zaposlenih, smanji potrebu za manuelnim
+      procesima i omogući efikasnije upravljanje poslovnom dokumentacijom. Kroz centralizovan sistem
+      korisnici mogu lakše da kreiraju, pregledaju, organizuju i prate dokumente tokom njihovog
+      životnog ciklusa.
     </p>
-    <p style="text-align: center; font-size: 24px">
-      Popularne aplikacije su: PowerAcel, DataLetter, Presentation Manager, TMail.
+    <p>
+      eOffice pruža podršku elektronskom upravljanju dokumentima, organizaciji poslovnih procesa i
+      praćenju aktivnosti korisnika. Sistem može da obuhvati različite funkcionalnosti kao što su
+      arhiviranje dokumenata, pretraga, upravljanje korisnicima i pravima pristupa, tokovi
+      odobravanja, evidencija aktivnosti i elektronsko potpisivanje dokumenata. Poseban fokus
+      stavljen je na preglednost i jednostavno korišćenje sistema. Korisnici mogu da pristupe
+      relevantnim informacijama kroz intuitivan interfejs, dok organizacije dobijaju centralizovano
+      mesto za upravljanje poslovnim sadržajem i procesima. eOffice je namenjen kompanijama i
+      organizacijama koje žele da unaprede način na koji upravljaju dokumentima i poslovnim
+      procesima, uz mogućnost prilagođavanja sistema sopstvenim potrebama i organizacionoj
+      strukturi.
+    </p>
+    <p style="text-align: center">
+      Popularne aplikacije su: PowerAcel, SquareCells, Presentation Manager.
     </p>
   </div>
 </template>
@@ -38,7 +54,7 @@
 }
 
 .office-img {
-  width: 100px;
-  height: 75px;
+  width: 200px;
+  height: 130px;
 }
 </style>
