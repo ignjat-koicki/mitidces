@@ -31,4 +31,10 @@
   width: 100% !important;
   height: 600px;
 }
+
+@media screen and (max-width: 600px) {
+  .background-img {
+    height: 150px;
+  }
+}
 </style>

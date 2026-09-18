@@ -8,34 +8,26 @@
       <div class="search-control">
         <SearchControlComponent :active="active" />
       </div>
-
+      <div v-if="isChildrenRoute" class="back-button" @click="lastPage($event)">
+        <div><FontAwesomeIcon :icon="faChevronLeft" :size="'xs'"></FontAwesomeIcon>Back</div>
+      </div>
       <div class="search-links">
-        <p>
+        <div
+          v-for="currentElement in currentSearchElements"
+          @click="onCurrentSearch(currentElement)"
+          v-bind:key="currentElement.route"
+          class="current-element"
+        >
           <FontAwesomeIcon :size="'xs'" :icon="faChevronRight" />
-          <span>Products</span>
-        </p>
-
-        <p>
-          <FontAwesomeIcon :size="'xs'" :icon="faChevronRight" />
-          <span>About</span>
-        </p>
-
-        <p>
-          <FontAwesomeIcon :size="'xs'" :icon="faChevronRight" />
-          <span>Services</span>
-        </p>
-
-        <p>
-          <FontAwesomeIcon :size="'xs'" :icon="faChevronRight" />
-          <span>For Customers</span>
-        </p>
+          <span>{{ currentElement.name }}</span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { faChevronRight, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faChevronLeft, faChevronRight, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import SearchControlComponent from '../searchControl/SearchControlComponent.vue'
 
@@ -81,12 +73,198 @@ export default {
         document.body.classList.remove('bodySearch')
       }
     },
+    lastPage(event) {
+      this.isChildrenRoute = false
+      this.currentSearchElements = this.searchElements
+    },
+    onCurrentSearch(currentElement) {
+      if (currentElement.isParent) {
+        this.currentSearchElements = currentElement.subItems
+        this.isChildrenRoute = true
+      } else {
+        this.$router.push({ name: currentElement.route })
+      }
+    },
   },
 
   data() {
     return {
       faSearch,
       faChevronRight,
+      faChevronLeft,
+      isChildrenRoute: false,
+      searchElements: [
+        {
+          name: 'Products',
+          route: 'ModelOffers',
+          isParent: true,
+          subItems: [
+            {
+              name: 'Laptops',
+              route: 'Laptops',
+              isParent: false,
+            },
+            {
+              name: 'Mobile Phones',
+              route: 'MobilePhones',
+              isParent: false,
+            },
+            {
+              name: 'TVs',
+              route: 'TVs',
+              isParent: false,
+            },
+            {
+              name: 'Watches',
+              route: 'Watches',
+              isParent: false,
+            },
+            {
+              name: 'AirBunds',
+              isParent: false,
+              route: 'Bunds',
+            },
+          ],
+        },
+        {
+          name: 'About',
+          route: 'CustomerSupport',
+          isParent: true,
+          subItems: [
+            {
+              name: 'Customer Support',
+              route: 'CustomerSupport',
+              isParent: false,
+            },
+            {
+              name: 'Language',
+              route: 'Language',
+              isParent: false,
+            },
+            {
+              name: 'Legal Questions',
+              isParent: false,
+              route: 'LegalQuestions',
+            },
+            {
+              name: 'Terms of Usage',
+              isParent: false,
+              route: 'TermsOfUses',
+            },
+          ],
+        },
+        {
+          name: 'Services',
+          route: 'eOffice',
+          isParent: true,
+          subItems: [
+            {
+              name: 'Customer Support',
+              isParent: false,
+              route: 'CustomerSupport',
+            },
+            {
+              name: 'Language',
+              isParent: false,
+              route: 'Language',
+            },
+            {
+              name: 'Legal Questions',
+              isParent: false,
+              route: 'LegalQuestions',
+            },
+            {
+              name: 'Terms of Usage',
+              isParent: false,
+              route: 'TermsOfUses',
+            },
+          ],
+        },
+      ],
+      currentSearchElements: [
+        {
+          name: 'Products',
+          route: 'ModelOffers',
+          isParent: true,
+          subItems: [
+            {
+              name: 'Laptops',
+              route: 'Laptops',
+              isParent: false,
+            },
+            {
+              name: 'Mobile Phones',
+              route: 'MobilePhones',
+              isParent: false,
+            },
+            {
+              name: 'TVs',
+              route: 'TVs',
+              isParent: false,
+            },
+            {
+              name: 'Watches',
+              route: 'Watches',
+              isParent: false,
+            },
+            {
+              name: 'AirBunds',
+              route: 'Bunds',
+              isParent: false,
+            },
+          ],
+        },
+        {
+          name: 'About',
+          route: 'CustomerSupport',
+          isParent: true,
+          subItems: [
+            {
+              name: 'Customer Support',
+              route: 'CustomerSupport',
+              isParent: false,
+            },
+            {
+              name: 'Language',
+              route: 'Language',
+              isParent: false,
+            },
+            {
+              name: 'Legal Questions',
+              route: 'LegalQuestions',
+              isParent: false,
+            },
+            {
+              name: 'Terms of Usage',
+              route: 'TermsOfUses',
+              isParent: false,
+            },
+          ],
+        },
+        {
+          name: 'Services',
+          route: 'eOffice',
+          isParent: true,
+          subItems: [
+            {
+              name: 'Customer Support',
+              route: 'CustomerSupport',
+            },
+            {
+              name: 'Language',
+              route: 'Language',
+            },
+            {
+              name: 'Legal Questions',
+              route: 'LegalQuestions',
+            },
+            {
+              name: 'Terms of Usage',
+              route: 'TermsOfUses',
+            },
+          ],
+        },
+      ],
     }
   },
 }
@@ -100,7 +278,7 @@ export default {
   left: 0;
 
   width: 100%;
-  height: 40vh;
+  height: 42vh;
 
   background: rgba(255, 255, 255, 0.98);
 
@@ -135,10 +313,23 @@ export default {
   margin-bottom: 15px;
 }
 
+.current-element {
+  cursor: pointer;
+}
+
 /* Links */
 
 .search-links {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  margin-top: 10px;
+}
+
+.search-links a {
+  text-decoration: none;
+  color: black;
 }
 
 .search-links p {
@@ -182,6 +373,18 @@ export default {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.back-button {
+  cursor: pointer;
+  padding: 5px 5px 5px 0px;
+  box-sizing: border-box;
+  width: 60px;
+  border: 2px dashed transparent;
+}
+
+.back-button:hover {
+  border: 2px dashed #0077ed;
 }
 
 /* Prevent body scrolling while search is open */

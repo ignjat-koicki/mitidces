@@ -144,7 +144,7 @@ export default {
 }
 
 .search-active {
-  border: 2px dashed #0077ed;
+  border: 2px dashed #0077ed !important;
 }
 
 .main-header {
@@ -326,6 +326,7 @@ export default {
   margin-left: auto;
   margin-right: 1rem;
   padding: 0.5rem;
+  border: 2px solid transparent;
 }
 
 .search:hover {

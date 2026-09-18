@@ -1,6 +1,6 @@
 <template>
   <div class="laptop-views">
-    <h2 class="laptop-title">TechBook1 Laptop Seria</h2>
+    <h2 class="laptop-title">TechBook</h2>
     <img src="./../assets/laptop.png" class="laptops-img" alt="" />
     <p style="font-size: 24px; font-weight: 400">
       TechBook1 Laptop serija je najnovija serija laptopova, sa ePlayStudio platformom za gejming.

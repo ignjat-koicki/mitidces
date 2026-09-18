@@ -3,6 +3,17 @@
     <h1 style="font-size: 50px">eOffice &nbsp;</h1>
     <img src="./../assets/eOffice.png" class="office-img" />
   </div>
+  <div v-for="app in apps" v-bind:key="app.id" class="section-apps">
+    <div>
+      <p class="text-align-start">{{ app.name }}</p>
+      <img :src="app.src" :alt="app.alt" class="office-item-icon" />
+    </div>
+    <div>
+      <p class="apps-content">
+        {{ app.text }}
+      </p>
+    </div>
+  </div>
   <div class="section-office-content">
     <p style="text-align: start">
       eOffice je moderna digitalna platforma namenjena organizaciji, upravljanju i automatizaciji
@@ -25,13 +36,43 @@
       procesima, uz mogućnost prilagođavanja sistema sopstvenim potrebama i organizacionoj
       strukturi.
     </p>
-    <p style="text-align: center">
-      Popularne aplikacije su: PowerAcel, SquareCells, Presentation Manager.
-    </p>
   </div>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts">
+export default {
+  name: 'eOffice',
+  data() {
+    return {
+      apps: [
+        {
+          id: 1,
+          name: 'Power Acel',
+          text: 'Power Acel je aplikacija namenjena za vođenje svakodnevne dokumentacije potrebne svakom korisniku.',
+          alt: 'power acel img',
+          src: '/power-acel.png',
+        },
+
+        {
+          id: 1,
+          name: 'Square Cells',
+          alt: 'square cells img',
+          text: '',
+          src: '/square-cells.png',
+        },
+
+        {
+          id: 1,
+          name: 'Presentation Manager',
+          alt: 'presentation manager img',
+          text: '',
+          src: '/presentation-manager.png',
+        },
+      ],
+    }
+  },
+}
+</script>
 
 <style scoped>
 .section-office-header {
@@ -41,6 +82,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.office-item-icon {
+  width: 100px;
+}
+
+.text-align-start {
+  text-align: start;
+}
+
+.apps-content {
+  margin-top: 100px;
+  margin-left: 50px;
+}
+
+.section-apps {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  max-width: 1200px;
+  row-gap: 50px;
+  padding: 20px;
+  margin: 0 auto;
+  box-shadow: 2px 5px 9px rgba(0, 0, 0, 0.15);
 }
 
 .section-office-content {

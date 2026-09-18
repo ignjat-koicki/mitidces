@@ -1,6 +1,6 @@
 <template>
   <div class="mobile-phone-views">
-    <h2 class="mobiles-title">Tech1 Mobile Phone Seria</h2>
+    <h2 class="mobiles-title">Tech</h2>
     <img src="./../assets/mobile-phones.png" class="mobile-phones-img" alt="" />
     <p style="font-size: 24px">
       T1 serija mobilnih telefona je najnovija serija telefona koja je integrisana sa TechBook1,

@@ -1,6 +1,6 @@
 <template>
   <div class="tv-views">
-    <h2 class="tv-title">Mitidces OLED STech TV Seria</h2>
+    <h2 class="tv-title">STech TV Seria</h2>
     <img src="./../assets/tv.png" class="tv-img" alt="" />
     <p style="font-size: 24px; font-weight: 400">
       Naša kolekcija Tv-a služi da našim korisnicima omogući nezaboravno iskustvo uz Mitidces
@@ -24,6 +24,7 @@
   margin-top: 30px;
   display: flex;
   flex-direction: column;
+  padding: 10px;
 }
 
 .tv-img {
